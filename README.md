@@ -4,7 +4,7 @@ Deployed a Gradient Boosting model that generated a 7x lift in ROI vs baseline â
 
 ## ðŸ”¬ Model Benchmarking
 
-This project tested every mainstream model for [prediction problem]:
+This project tested every mainstream model for forecasting market Direction]:
 - Logistic Regression
 - Random Forests
 - Decision Trees
