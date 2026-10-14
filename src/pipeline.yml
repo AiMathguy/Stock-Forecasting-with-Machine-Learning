@@ -1,0 +1,39 @@
+
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+display_name: stock_forecasting_pipeline
+type: pipeline
+
+inputs:
+  pipeline_job_input:
+    type: uri_file
+    path: azureml:stock-market-data:1
+
+outputs:
+  pipeline_job_transformed_data: {}
+  pipeline_job_trained_model: {}
+  pipeline_job_evaluated_model: {}
+
+jobs:
+  prep_data:
+    type: command
+    component: azureml:prep_data:1
+    inputs:
+      input_data: ${{parent.inputs.pipeline_job_input}}
+    outputs:
+      output_data: ${{parent.outputs.pipeline_job_transformed_data}}
+
+  train_model:
+    type: command
+    component: azureml:train_models:1
+    inputs:
+      input_data: ${{parent.jobs.prep_data.outputs.output_data}}
+    outputs:
+      output_data: ${{parent.outputs.pipeline_job_trained_model}}
+
+  evaluate_model:
+    type: command
+    component: azureml:evaluate_models:1
+    inputs:
+      input_data: ${{parent.jobs.prep_data.outputs.output_data}}
+    outputs:
+      output_data: ${{parent.outputs.pipeline_job_evaluated_model}}

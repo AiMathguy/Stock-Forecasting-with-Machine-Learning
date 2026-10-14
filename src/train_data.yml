@@ -1,0 +1,22 @@
+
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: train_models
+display_name: Train stock prediction models
+version: 2
+type: command
+
+inputs:
+  input_data:
+    type: uri_file
+
+outputs:
+  output_data:
+    type: uri_folder
+
+code: .
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+
+command: >-
+  python train.py
+  --data-csv ${{inputs.input_data}}
+  --output-dir ${{outputs.output_data}}

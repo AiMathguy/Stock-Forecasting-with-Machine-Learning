@@ -1,0 +1,55 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+config/
+.azure/
+*.pem
+*.key
+
+# Local data and model artifacts
+data/
+models/
+mlruns/
+mlartifacts/
+*.db
+*.sqlite
+*.sqlite3
+
+# Local tooling
+.vscode/
+.idea/
+
+# Archives
+*.zip
+
+# Azure ML logs
+src/train-logs/
+src/eval-logs/
+# Local dataset
+src/stock_data.csv
+# Company logo
+streamlit/linkfields_logo*.svg
+# Archives
+*.zip
+
+# Azure ML generated logs
+src/train-logs/
+src/eval-logs/
+src/pipeline-logs/
+
+# Local dataset
+src/stock_data.csv
+
+# Company logo
+streamlit/linkfields_logo*.svg
+
+# Archives
+*.zip
