@@ -1,0 +1,87 @@
+# Python / Azure ML Forecasting Project
+
+# -------------------------
+# Python environments
+# -------------------------
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -------------------------
+# Secrets and credentials
+# -------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+credentials.json
+secrets.json
+
+# Azure local configuration / credentials
+.azure/
+.azureml/
+.azureconfig
+
+# Review Azure config files manually before committing
+# Do not blindly ignore pipeline/component YAML files.
+
+# -------------------------
+# Jupyter notebooks
+# -------------------------
+.ipynb_checkpoints/
+
+# -------------------------
+# Data and generated artifacts
+# -------------------------
+data/raw/
+data/processed/
+datasets/
+*.csv
+*.parquet
+*.feather
+
+# Model binaries and checkpoints
+models/
+artifacts/
+checkpoints/
+*.pkl
+*.joblib
+*.h5
+*.keras
+*.onnx
+*.pt
+*.pth
+*.safetensors
+
+# -------------------------
+# Logs and caches
+# -------------------------
+logs/
+*.log
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# -------------------------
+# Build outputs
+# -------------------------
+build/
+dist/
+*.egg-info/
+
+# -------------------------
+# IDE and OS files
+# -------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

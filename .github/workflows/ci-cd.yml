@@ -1,0 +1,44 @@
+name: stock-trading-pipeline
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0/4 * * *"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - "prep_data.py"
+      - "prep_data.yml"
+      - "pipeline.yml"
+      - ".github/workflows/stock-trading-pipeline.yml"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Install Azure ML CLI extension
+        run: az extension add --name ml --upgrade
+
+      - name: Submit stock forecasting pipeline
+        run: |
+          az ml job create \
+            --file ./src/pipeline.yml \
+            --resource-group rg-thatobilankulu01-3617 \
+            --workspace-name stock-trading-ml

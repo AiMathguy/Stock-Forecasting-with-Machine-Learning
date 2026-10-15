@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "Return_1d": 0.012,
+      "Return_5d": 0.035,
+      "MA_Ratio_5": 1.008,
+      "MA_Ratio_20": 1.025,
+      "MA_Ratio_50": 1.041,
+      "Volatility_20": 0.018,
+      "High_Low_Range": 0.022,
+      "Volume_Change": 0.15
+    }
+  ]
+}

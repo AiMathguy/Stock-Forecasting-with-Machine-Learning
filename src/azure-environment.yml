@@ -1,0 +1,6 @@
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+name: stock-prediction-env
+version: 7
+image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu22.04:latest
+conda_file: ./environment.yml
+description: Stock prediction environment with Azure ML SDK dependencies

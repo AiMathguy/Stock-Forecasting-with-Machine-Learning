@@ -1,0 +1,15 @@
+- job: WaitForAzureMLJobCompletion
+  displayName: Wait for AzureML Job Completion
+  pool: server
+  timeoutInMinutes: 0
+  dependsOn: SubmitAzureMLJob
+  variables: 
+    # Save the name of the azureMl job submitted in the previous step to a variable. It will be used as an input to the AzureML Job Wait task.
+    azureml_job_name_from_submit_job: $[ dependencies.SubmitAzureMLJob.outputs['submit_azureml_job_task.JOB_NAME'] ] 
+  steps:
+  - task: AzureMLJobWaitTask@1
+    inputs:
+      serviceConnection: $(service-connection)
+      resourceGroupName: $(resource-group)
+      azureMLWorkspaceName: $(workspace)
+      azureMLJobName: $(azureml_job_name_from_submit_job)

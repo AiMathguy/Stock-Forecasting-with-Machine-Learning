@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+.azure/
+config/config.json
+
+# Generated ML artifacts
+mlruns/
+mlartifacts/
+*.pkl
+*.joblib
+
+# Local data and caches
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db

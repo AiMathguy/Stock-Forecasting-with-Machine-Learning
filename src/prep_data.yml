@@ -1,0 +1,27 @@
+﻿$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+name: prep_data
+display_name: Prep stock data
+description: Clean one ticker's OHLCV data and engineer features + next-day Close target.
+
+# Folder containing prep_data.py (same folder as this YAML)
+code: .
+
+environment: azureml:stock-prediction-env@latest
+
+inputs:
+  input_data:
+    type: uri_file
+  ticker:
+    type: string
+    default: AAPL
+
+outputs:
+  output_data:
+    type: uri_folder
+
+command: >-
+  python prep_data.py
+  --input ${{inputs.input_data}}
+  --ticker ${{inputs.ticker}}
+  --output ${{outputs.output_data}}

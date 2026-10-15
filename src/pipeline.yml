@@ -1,0 +1,46 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+display_name: stock_forecasting_pipeline
+type: pipeline
+
+inputs:
+  pipeline_job_input:
+    type: uri_file
+    path: azureml:stock-market-data:1
+  ticker: AAPL
+
+outputs:
+  pipeline_job_transformed_data:
+    type: uri_folder
+  pipeline_job_trained_model:
+    type: uri_folder
+  pipeline_job_evaluated_model:
+    type: uri_folder
+
+jobs:
+  prep_data:
+    type: command
+    component: azureml:prep_data@latest
+    compute: azureml:thatobilankulu012
+    inputs:
+      input_data: ${{parent.inputs.pipeline_job_input}}
+      ticker: ${{parent.inputs.ticker}}
+    outputs:
+      output_data: ${{parent.outputs.pipeline_job_transformed_data}}
+
+  train_model:
+    type: command
+    component: azureml:train_models@latest
+    compute: azureml:thatobilankulu012
+    inputs:
+      input_data: ${{parent.jobs.prep_data.outputs.output_data}}
+    outputs:
+      output_data: ${{parent.outputs.pipeline_job_trained_model}}
+
+  evaluate_model:
+    type: command
+    component: azureml:evaluate_models@latest
+    compute: azureml:thatobilankulu012
+    inputs:
+      input_data: ${{parent.jobs.prep_data.outputs.output_data}}
+    outputs:
+      output_data: ${{parent.outputs.pipeline_job_evaluated_model}}

@@ -1,0 +1,113 @@
+{
+  "ticker": "AAPL",
+  "period": "5y",
+  "target": "next_trading_day_close",
+  "selected_models_by_vote": {
+    "ExtraTrees": 3,
+    "RandomForest": 2,
+    "Ridge": 2
+  },
+  "vote_reasons": {
+    "ExtraTrees": [
+      "ample rows support a nonlinear ensemble",
+      "robust tree ensembles can handle irregular/outlier patterns"
+    ],
+    "RandomForest": [
+      "ample rows support a nonlinear ensemble",
+      "tree ensemble candidate for irregular observations"
+    ],
+    "Ridge": [
+      "regularised linear baseline",
+      "no clear nonlinear advantage in diagnostic split"
+    ]
+  },
+  "data_profile": {
+    "rows": 764,
+    "feature_count": 8,
+    "return_skewness": 0.16611978732081564,
+    "return_excess_kurtosis": 4.175352930748215,
+    "outlier_return_fraction": 0.014397905759162303,
+    "return_volatility": 0.021987592130738483,
+    "nonlinear_signal": false,
+    "small_sample": false,
+    "high_volatility": false,
+    "heavy_tails": true,
+    "skewed_returns": false
+  },
+  "model_results": {
+    "ExtraTrees": {
+      "voting_score": 3,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 30,
+        "min_samples_split": 8,
+        "min_samples_leaf": 4,
+        "max_features": 1.0
+      },
+      "cv_best_rmse": 31.32117008547607,
+      "holdout_mae": 37.19042171472963,
+      "holdout_rmse": 38.54713987033128,
+      "holdout_direction_accuracy": 0.453125,
+      "naive_baseline_holdout_mae": 1.5683099428812646,
+      "naive_baseline_holdout_rmse": 2.0855772752522888,
+      "mae_improvement_vs_baseline": -35.62211177184837,
+      "cv_results_csv": "C:\\Users\\Thato Bilankulu\\Documents\\stock-trading\\models\\ExtraTrees_cv_results.csv"
+    },
+    "RandomForest": {
+      "voting_score": 2,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 30,
+        "min_samples_split": 8,
+        "min_samples_leaf": 4,
+        "max_features": 1.0
+      },
+      "cv_best_rmse": 31.32117008547607,
+      "holdout_mae": 37.19042171472963,
+      "holdout_rmse": 38.54713987033128,
+      "holdout_direction_accuracy": 0.453125,
+      "naive_baseline_holdout_mae": 1.5683099428812646,
+      "naive_baseline_holdout_rmse": 2.0855772752522888,
+      "mae_improvement_vs_baseline": -35.62211177184837,
+      "cv_results_csv": "C:\\Users\\Thato Bilankulu\\Documents\\stock-trading\\models\\RandomForest_cv_results.csv"
+    },
+    "Ridge": {
+      "voting_score": 2,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 30,
+        "min_samples_split": 8,
+        "min_samples_leaf": 4,
+        "max_features": 1.0
+      },
+      "cv_best_rmse": 31.32117008547607,
+      "holdout_mae": 37.19042171472963,
+      "holdout_rmse": 38.54713987033128,
+      "holdout_direction_accuracy": 0.453125,
+      "naive_baseline_holdout_mae": 1.5683099428812646,
+      "naive_baseline_holdout_rmse": 2.0855772752522888,
+      "mae_improvement_vs_baseline": -35.62211177184837,
+      "cv_results_csv": "C:\\Users\\Thato Bilankulu\\Documents\\stock-trading\\models\\Ridge_cv_results.csv"
+    }
+  },
+  "winner_by_cv_rmse": "ExtraTrees",
+  "saved_model_path": "C:\\Users\\Thato Bilankulu\\Documents\\stock-trading\\models\\stock_model.joblib",
+  "feature_columns": [
+    "Return_1d",
+    "Return_5d",
+    "MA_Ratio_5",
+    "MA_Ratio_20",
+    "MA_Ratio_50",
+    "Volatility_20",
+    "High_Low_Range",
+    "Volume_Change"
+  ],
+  "feature_count": 8,
+  "training_rows": 956,
+  "development_rows": 764,
+  "holdout_rows": 192,
+  "cv_strategy": "TimeSeriesSplit",
+  "cv_splits": 5,
+  "mlflow_experiment": "stock-prediction-model-selection",
+  "note": "Model family and hyperparameters are selected using development-only TimeSeriesSplit CV RMSE. The final 20% is used for holdout metrics and is not used for tuning. Since multiple candidates are compared on this holdout, those metrics are still model-selection evidence rather than a fully unbiased final estimate. The saved winner is refit on all labelled rows."
+}

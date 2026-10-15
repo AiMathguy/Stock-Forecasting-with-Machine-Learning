@@ -1,0 +1,72 @@
+{
+  "ticker": "AAPL",
+  "period": "5y",
+  "target": "next_trading_day_close",
+  "selected_models_by_vote": {
+    "ExtraTrees": 3,
+    "RandomForest": 2,
+    "Ridge": 2
+  },
+  "vote_reasons": {
+    "ExtraTrees": [
+      "ample rows support a nonlinear ensemble",
+      "robust tree ensembles can handle irregular/outlier patterns"
+    ],
+    "RandomForest": [
+      "ample rows support a nonlinear ensemble",
+      "tree ensemble candidate for irregular observations"
+    ],
+    "Ridge": [
+      "regularised linear baseline",
+      "no clear nonlinear advantage in diagnostic split"
+    ]
+  },
+  "data_profile": {
+    "rows": 1204,
+    "feature_count": 9,
+    "return_skewness": 0.39932451713067457,
+    "return_excess_kurtosis": 6.842483019986112,
+    "outlier_return_fraction": 0.02159468438538206,
+    "return_volatility": 0.017723564230146323,
+    "nonlinear_signal": false,
+    "small_sample": false,
+    "high_volatility": false,
+    "heavy_tails": true,
+    "skewed_returns": false
+  },
+  "chronological_holdout_metrics": {
+    "ExtraTrees": {
+      "mae": 30.050765568101806,
+      "rmse": 39.595220288972044,
+      "direction_accuracy": 0.46887966804979253,
+      "test_rows": 241
+    },
+    "RandomForest": {
+      "mae": 30.63406580744725,
+      "rmse": 40.389869361889836,
+      "direction_accuracy": 0.4979253112033195,
+      "test_rows": 241
+    },
+    "Ridge": {
+      "mae": 3.163956404023979,
+      "rmse": 4.49500032262581,
+      "direction_accuracy": 0.5228215767634855,
+      "test_rows": 241
+    }
+  },
+  "winner_by_holdout_mae": "Ridge",
+  "saved_model_path": "models\\stock_model.joblib",
+  "feature_columns": [
+    "Close",
+    "Return_1d",
+    "Return_5d",
+    "MA_Ratio_5",
+    "MA_Ratio_20",
+    "MA_Ratio_50",
+    "Volatility_20",
+    "High_Low_Range",
+    "Volume_Change"
+  ],
+  "training_rows": 1204,
+  "note": "Holdout metrics are for one chronological split. For stronger evidence, add expanding-window walk-forward validation and compare against a naive baseline that predicts the next close equals the latest close."
+}

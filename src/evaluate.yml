@@ -1,0 +1,20 @@
+﻿$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: evaluate_models
+display_name: Evaluate stock prediction models
+type: command
+
+inputs:
+  input_data:
+    type: uri_folder
+
+outputs:
+  output_data:
+    type: uri_folder
+
+code: .
+environment: azureml:stock-prediction-env@latest
+
+command: >-
+  python eval.py
+  --data-csv ${{inputs.input_data}}
+  --output-dir ${{outputs.output_data}}

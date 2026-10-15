@@ -1,0 +1,12 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: drift_detector
+display_name: Stock Drift Detector
+version: 1
+type: command
+
+code: .
+
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+
+command: >-
+  python drift_monitor.py

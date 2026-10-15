@@ -1,0 +1,5 @@
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+name: stock-prediction-env
+description: Python 3.12 env for stock prep, training and evaluation.
+image: mcr.microsoft.com/azureml/minimal-py312-inference:latest
+conda_file: conda.yml

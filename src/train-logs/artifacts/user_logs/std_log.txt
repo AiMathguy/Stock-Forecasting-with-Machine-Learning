@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "train.py", line 43, in <module>
+    import yfinance as yf
+ModuleNotFoundError: No module named 'yfinance'

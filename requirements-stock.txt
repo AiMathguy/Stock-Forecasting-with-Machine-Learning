@@ -1,0 +1,13 @@
+numpy==1.26.4
+pandas==2.2.2
+scipy==1.13.1
+pyarrow==15.0.2
+protobuf==4.25.3
+yfinance==0.2.40
+scikit-learn==1.5.1
+joblib==1.4.2
+mlflow==2.14.1
+fastapi==0.111.1
+uvicorn==0.30.3
+pydantic==2.8.2
+pytest==8.2.2
